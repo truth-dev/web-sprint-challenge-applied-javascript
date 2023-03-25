@@ -1,4 +1,6 @@
-const Card = (article) => {
+import axios from "axios";
+
+const Card = (articleObj) => {
   // TASK 5
   // ---------------------
   // Implement this function, which should return the markup you see below.
@@ -17,7 +19,29 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
-}
+
+
+  const cardWrap = document.createElement("div");
+  const headLine = document.createElement("div")
+  const author = document.createElement("div")
+  const imgContainer = document.createElement('div')
+  const imgSrc = document.createElement("img")
+  const authorName = document.createElement("span")
+
+  cardWrap.classList.add('card');
+  headLine.classList.add('headline');
+  author.classList.add('author');
+  imgContainer.classList.add('img-container');
+
+ headLine.textContent = articleObj.
+  
+  
+
+  cardWrap.addEventListener('click',() =>{
+   console.log(` it works ${headLine.classList.toggle('headline')}`);
+   } )
+   console.log(cardWrap);
+ }
 
 const cardAppender = (selector) => {
   // TASK 6
@@ -28,6 +52,15 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
+
+  axios.get(`http://localhost:5001/api/articles`).then(res =>{
+    console.log(res.data);
+  })
+  .catch(error => console.error(error))
+
+ 
+
 }
+
 
 export { Card, cardAppender }
