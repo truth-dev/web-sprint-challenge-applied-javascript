@@ -28,19 +28,19 @@ const Card = (articleObj) => {
   const imgSrc = document.createElement("img")
   const authorName = document.createElement("span")
 
-  cardWrap.classList.add('card');
-  headLine.classList.add('headline');
-  author.classList.add('author');
-  imgContainer.classList.add('img-container');
+ 
 
- headLine.textContent = articleObj.
+ headLine.textContent = articleObj.headline;
+ author.textContent = articleObj.authorName;
+ 
+
   
   
 
   cardWrap.addEventListener('click',() =>{
-   console.log(` it works ${headLine.classList.toggle('headline')}`);
+   console.log(` it works ${headLine.toggle('headline')}`);
    } )
-   console.log(cardWrap);
+   
  }
 
 const cardAppender = (selector) => {
@@ -58,7 +58,9 @@ const cardAppender = (selector) => {
   })
   .catch(error => console.error(error))
 
- 
+const cardWrap = Card({bootstrap: "headline"});
+console.log(cardWrap)
+
 
 }
 

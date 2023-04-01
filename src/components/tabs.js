@@ -16,17 +16,22 @@ const Tabs = (topics) => {
   // </div>
   //
 
-  const topics = document.createElement('div');
-  const java = document.createElement('div');
-  const boot = document.createElement('div');
-  const tech = document.createElement('div');
+  const top = document.createElement('div');
+  const javascript = document.createElement('div');
+  const bootstrap = document.createElement('div');
+  const technology = document.createElement('div');
 
-  top.textContent = topics.topics;
-  java.textContent = topics.javasript;
-  boot.textContent = topics.bootstrap;
-  tech.textContent = topics.technology;
+  top.classList.add("topics");
+  javascript.classList.add("tab");
+  bootstrap.classList.add("tab");
+  technology.classList.add("tab");
 
-  
+  top.textContent = topics.top;
+  javascript.textContent = topics.javasript;
+  bootstrap.textContent = topics.bootstrap;
+  technology.textContent = topics.technology;
+
+  return topics;
 }
 
 const tabsAppender = (selector) => {
@@ -45,7 +50,6 @@ const tabsAppender = (selector) => {
   .catch(error => console.error(error));
 
   
-
 
 }
 
