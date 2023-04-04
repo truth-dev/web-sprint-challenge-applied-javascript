@@ -31,7 +31,10 @@ const Tabs = (topics) => {
   bootstrap.textContent = topics.bootstrap;
   technology.textContent = topics.technology;
 
-  return topics;
+  top.appendChild('tabs');
+  top.appendChild(bootstrap);
+
+  return top;
 }
 
 const tabsAppender = (selector) => {
@@ -43,14 +46,23 @@ const tabsAppender = (selector) => {
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
   //
 
-  axios.get("http://localhost:5001/api/topics")
-  .then(resp => {
-    console.log(resp.data)
-  })
-  .catch(error => console.error(error));
+  axios.get("http://localhost:5001/api/topics").then(res => {
+     console.log(res.data.topics)
+
+     const newTop = Tabs(topics).append(javasript);
+    
+  
+
+    })
+        
+      
+      //.catch(error => console.error(error))
+    }
+  
+  
 
   
 
-}
+
 
 export { Tabs, tabsAppender }

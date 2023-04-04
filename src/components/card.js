@@ -28,19 +28,27 @@ const Card = (articleObj) => {
   const imgSrc = document.createElement("img")
   const authorName = document.createElement("span")
 
+  cardWrap.classList.add('card');
+  headLine.classList.add('headline');
+  author.classList.add('author');
+  imgContainer.classList.add('img-container');
+  imgSrc.classList.add('authorPhoto');
+  authorName.classList.add('authorName');
+
  
 
  headLine.textContent = articleObj.headline;
  author.textContent = articleObj.authorName;
  
-
+cardWrap.append(headLine);
+cardWrap.append(author);
   
   
 
   cardWrap.addEventListener('click',() =>{
    console.log(` it works ${headLine.toggle('headline')}`);
    } )
-   
+   return cardWrap;
  }
 
 const cardAppender = (selector) => {
@@ -54,12 +62,19 @@ const cardAppender = (selector) => {
   //
 
   axios.get(`http://localhost:5001/api/articles`).then(res =>{
-    console.log(res.data);
+    console.log(res.data.articles);
+    for(let key in res.data.articles){
+      res.data.articles[key].forEach(art => {
+         //console.log(art);
+        const newArt = Card(art);
+        document.querySelector(selector).append(newArt);
+      })
+    }
   })
   .catch(error => console.error(error))
 
-const cardWrap = Card({bootstrap: "headline"});
-console.log(cardWrap)
+
+
 
 
 }

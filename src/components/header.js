@@ -16,19 +16,21 @@ const dataSp = document.createElement('span')
 const titleS = document.createElement('h1');
 const tempSp = document.createElement('span');
 
-headerWra.classList.add('.header');
-
+headerWra.classList.add('header');
 dataSp.classList.add('date');
 tempSp.classList.add('temp');
 
 titleS.textContent = title;
+console.log(titleS)
 
-dataSp.textContent = date;
-tempSp.textContent = temp;
+dataSp.textContent = date.date;
+tempSp.textContent = temp.temp;
 
+headerWra.append(title);
+headerWra.append(date);
+headerWra.append(temp)
 
-
-
+return headerWra;
 
 
 }
@@ -47,7 +49,7 @@ const headerAppender = (selector) => {
   // We are taking care of passing in the correct selector on line 16,
   // so all that you need to do is pass it into the querySelector method
   // for the tests to work!
- document.querySelector(selector).titleS
+ document.querySelector(selector).append(Header);
 
 }
 
