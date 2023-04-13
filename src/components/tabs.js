@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+
+
 const Tabs = (topics) => {
   // TASK 3
   // ---------------------
@@ -17,25 +19,27 @@ const Tabs = (topics) => {
   //
 
   const top = document.createElement('div');
-  const javascript = document.createElement('div');
-  const bootstrap = document.createElement('div');
-  const technology = document.createElement('div');
+
 
   top.classList.add("topics");
-  javascript.classList.add("tab");
-  bootstrap.classList.add("tab");
-  technology.classList.add("tab");
+ 
 
-  top.textContent = topics.top;
-  javascript.textContent = topics.javasript;
-  bootstrap.textContent = topics.bootstrap;
-  technology.textContent = topics.technology;
+ topics.forEach(t => {
+  const topic = document.createElement('div');
+  topic.classList.add('tab')
+  topic.textContent = t;
+  top.appendChild(topic)
+ })
+  
+ 
+  
+  
 
-  top.appendChild('tabs');
-  top.appendChild(bootstrap);
+  
 
   return top;
 }
+
 
 const tabsAppender = (selector) => {
   // TASK 4
@@ -46,21 +50,20 @@ const tabsAppender = (selector) => {
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
   //
 
-  axios.get("http://localhost:5001/api/topics").then(res => {
-     console.log(res.data.topics)
-
-     const newTop = Tabs(topics).append(javasript);
+  axios.get("http://localhost:5001/api/topics").then(resp =>{
+    console.log(resp.data.topics);
     
-  
-
-    })
-        
       
-      //.catch(error => console.error(error))
-    }
-  
-  
+        const newTop = Tabs(resp.data.topics)
+        document.querySelector(selector).append(newTop)
+     
+    
 
+   
+})
+// .catch(error => console.error(error))
+  
+}
   
 
 

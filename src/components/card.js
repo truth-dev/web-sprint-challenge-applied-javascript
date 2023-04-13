@@ -32,21 +32,28 @@ const Card = (articleObj) => {
   headLine.classList.add('headline');
   author.classList.add('author');
   imgContainer.classList.add('img-container');
-  imgSrc.classList.add('authorPhoto');
-  authorName.classList.add('authorName');
+ 
+ 
 
  
 
  headLine.textContent = articleObj.headline;
- author.textContent = articleObj.authorName;
+ authorName.textContent = articleObj.authorName;
+ imgSrc.src = articleObj.authorPhoto;
+ 
  
 cardWrap.append(headLine);
+imgContainer.append(imgSrc)
+author.append(imgContainer)
+author.append(authorName);
 cardWrap.append(author);
+
+
   
   
 
   cardWrap.addEventListener('click',() =>{
-   console.log(` it works ${headLine.toggle('headline')}`);
+   console.log(`  ${articleObj.headline}`);
    } )
    return cardWrap;
  }
